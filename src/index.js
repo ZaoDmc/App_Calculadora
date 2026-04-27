@@ -1,6 +1,6 @@
 const express = require('express')
-const { conectarDB, sequelize } = require('./database/conection')
-const Operacion = require('./models/operación')
+const { conectarDB, sequelize } = require('./database/conexion')
+const Operacion = require('./models/operacion')
 const operacionesRouter = require('./routes/operaciones')
 const app = express()
 const PORT = 3000

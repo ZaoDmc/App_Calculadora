@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const { sequelize } = require('../database/conection')
+const { sequelize } = require('../database/conexion')
 
 const Operacion = sequelize.define('Operacion', {
     id: {

@@ -1,4 +1,4 @@
-const Operacion = require('../models/operación')
+const Operacion = require('../models/operacion')
 
 const calcular = (num1, num2, tipo) => {
     switch(tipo) {
