@@ -1,0 +1,62 @@
+.ventana {
+  width: 900px;
+  height: 600px;
+  border: 2px solid #0a246a;
+  border-radius: 6px 6px 3px 3px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 20px rgba(0,0,0,0.5);
+}
+
+.titlebar {
+  background: linear-gradient(to bottom, #2a6dd9, #1a4fad);
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.titlebar-icon {
+  font-size: 14px;
+}
+
+.titlebar-title {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  flex: 1;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.titlebar-btns {
+  display: flex;
+  gap: 2px;
+}
+
+.tb-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+}
+
+.tb-btn.min { background: linear-gradient(to bottom, #5ca0e8, #3a7fd4); }
+.tb-btn.max { background: linear-gradient(to bottom, #5ca0e8, #3a7fd4); }
+.tb-btn.cls { background: linear-gradient(to bottom, #e85c5c, #c03030); }
+
+.ventana-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

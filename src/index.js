@@ -1,10 +1,12 @@
 const express = require('express')
+const cors = require('cors')
 const { conectarDB, sequelize } = require('./database/conexion')
 const Operacion = require('./models/operacion')
 const operacionesRouter = require('./routes/operaciones')
 const app = express()
 const PORT = 3000
 
+app.use(cors({ origin: 'http://localhost:3001' }))
 app.use(express.json())
 app.use('/operaciones', operacionesRouter)
 

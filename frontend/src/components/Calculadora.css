@@ -1,0 +1,140 @@
+.calc-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+}
+
+.calc-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 380px;
+}
+
+.screen {
+  background: rgba(0,0,0,0.82);
+  border: 3px solid #444;
+  border-radius: 6px;
+  padding: 10px 16px;
+  text-align: right;
+}
+
+.screen-expr {
+  color: #8aff8a;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  opacity: 0.75;
+  min-height: 16px;
+}
+
+.screen-result {
+  color: #00ff41;
+  font-size: 32px;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.btn {
+  height: 52px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 0.07s, filter 0.07s;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.92);
+  filter: brightness(0.85);
+}
+
+.btn-num {
+  background: radial-gradient(ellipse at 35% 30%, #e8e4da, #b8b4aa);
+  box-shadow: 0 4px 0 #6a6860, 0 5px 8px rgba(0,0,0,0.6);
+  color: #1a1a1a;
+}
+
+.sub {
+  font-size: 7px;
+  color: #555;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.btn-op {
+  background: radial-gradient(ellipse at 35% 30%, #aaccee, #5588bb);
+  box-shadow: 0 4px 0 #224466, 0 5px 8px rgba(0,0,0,0.6);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  font-size: 20px;
+}
+
+.btn-clear {
+  background: radial-gradient(ellipse at 35% 30%, #ffaaaa, #cc4444);
+  box-shadow: 0 4px 0 #881111, 0 5px 8px rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 13px;
+}
+
+.btn-eq {
+  border-radius: 26px;
+  height: 52px;
+  background: radial-gradient(ellipse at 35% 30%, #ffdd88, #cc8800);
+  box-shadow: 0 4px 0 #885500, 0 5px 8px rgba(0,0,0,0.6);
+  color: #3a1a00;
+  font-size: 24px;
+  grid-column: span 2;
+}
+
+.btn-cero {
+  border-radius: 26px;
+  grid-column: span 2;
+}
+
+.name-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.name-input {
+  flex: 1;
+  border: 2px inset #999;
+  background: rgba(255,255,255,0.9);
+  padding: 5px 8px;
+  font-size: 11px;
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 3px;
+  color: #000;
+}
+
+.save-btn {
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  background: linear-gradient(to bottom, #4a90d9, #2a6fba);
+  color: #fff;
+  border: 1px solid #1a4f99;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}

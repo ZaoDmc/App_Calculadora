@@ -1,0 +1,114 @@
+.hist-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.msn-header {
+  background: linear-gradient(to bottom, #2a6dd9, #1a4fad);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.msn-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ff6600;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.msn-name {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.msn-status {
+  color: rgba(255,255,255,0.8);
+  font-size: 10px;
+}
+
+.msn-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255,255,255,0.94);
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.msg.sent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.msg.recv {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.msg-name {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.msg.recv .msg-name { color: #0055aa; }
+.msg.sent .msg-name { color: #996600; }
+
+.msg-bubble {
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.msg.recv .msg-bubble {
+  background: #ddeeff;
+  border-color: #aaccee;
+  color: #003366;
+}
+
+.msg.sent .msg-bubble {
+  background: #fff9cc;
+  border-color: #ddcc88;
+  color: #443300;
+}
+
+.msg-meta {
+  font-size: 10px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.msg-delete {
+  cursor: pointer;
+  font-size: 13px;
+  opacity: 0.6;
+  margin-left: 4px;
+  transition: opacity 0.15s;
+}
+
+.msg-delete:hover { opacity: 1; }
