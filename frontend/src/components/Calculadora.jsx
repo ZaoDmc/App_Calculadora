@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { crearOperacion } from '../services/api'
 
 const Calculadora = ({ onOperacionGuardada }) => {
+  const [exprCompleta, setExprCompleta] = useState('')
   const [num1, setNum1] = useState('')
   const [num2, setNum2] = useState('')
   const [op, setOp] = useState('')
@@ -9,31 +10,50 @@ const Calculadora = ({ onOperacionGuardada }) => {
   const [expr, setExpr] = useState('')
   const [nombre, setNombre] = useState('')
   const [ultimoCalculo, setUltimoCalculo] = useState(null)
+  
 
   const opSym = (o) => ({'+':'+','-':'−','*':'×','/':'÷','%':'%'}[o] || o)
   const opNombre = (o) => ({'+':'suma','-':'resta','*':'multiplicacion','/':'division','%':'division'}[o] || 'suma')
 
   const agregarNum = (n) => {
     if (!op) {
-      if (n === '.' && num1.includes('.')) return
-      const nuevo = num1 + n
-      setNum1(nuevo)
-      setResultado(nuevo)
-      setExpr(nuevo)
+        if (n === '.' && num1.includes('.')) return
+        const nuevo = num1 + n
+        setNum1(nuevo)
+        setResultado(nuevo)
+        setExpr(nuevo)
     } else {
-      if (n === '.' && num2.includes('.')) return
-      const nuevo = num2 + n
-      setNum2(nuevo)
-      setResultado(nuevo)
-      setExpr(num1 + ' ' + opSym(op) + ' ' + nuevo)
+        if (n === '.' && num2.includes('.')) return
+        const nuevo = num2 + n
+        setNum2(nuevo)
+        setResultado(nuevo)
+        setExpr(num1 + ' ' + opSym(op) + ' ' + nuevo)
     }
   }
 
   const elegirOp = (o) => {
     if (!num1) return
+    if (num1 && num2 && op) {
+        const a = parseFloat(num1)
+        const b = parseFloat(num2)
+        let res
+        if (op === '+') res = a + b
+        else if (op === '-') res = a - b
+        else if (op === '*') res = a * b
+        else if (op === '/') res = b !== 0 ? a / b : null
+        if (res !== null) {
+            const rounded = parseFloat(res.toFixed(6))
+            setExprCompleta(prev => prev === '' ? num1 + ' ' + opSym(op) + ' ' + num2 : prev + ' ' + opSym(op) + ' ' + num2)
+            setNum1(String(rounded))
+            setNum2('')
+            setResultado(String(rounded))
+        }
+    } else {
+        setExprCompleta(num1)
+    }
     setOp(o)
     setExpr(num1 + ' ' + opSym(o) + ' ')
-  }
+}
 
   const calcular = () => {
     if (!num1 || !op || !num2) return
@@ -48,27 +68,34 @@ const Calculadora = ({ onOperacionGuardada }) => {
     if (res === null) { setResultado('Error'); return }
     const rounded = parseFloat(res.toFixed(6))
 
-    // Capturamos todo ANTES de tocar cualquier estado
+    const expFinal = exprCompleta === ''
+        ? num1 + ' ' + opSym(op) + ' ' + num2
+        : exprCompleta + ' ' + opSym(op) + ' ' + num2
+
     const calculo = {
-      numero1: a,
-      numero2: b,
-      operacion: opNombre(op),
-      resultado: rounded
+    numero1: a,
+    numero2: b,
+    operacion: opNombre(op),
+    resultado: rounded,
+    expresion: expFinal + ' = ' + rounded
     }
+
 
     setUltimoCalculo(calculo)
     setResultado(String(rounded))
-    setExpr(num1 + ' ' + opSym(op) + ' ' + num2 + ' =')
+    setExpr(expFinal + ' =')
+    setExprCompleta('')
     setNum1(String(rounded))
     setNum2('')
     setOp('')
-  }
+}
 
   const limpiar = () => {
     setNum1(''); setNum2(''); setOp('')
     setResultado('0'); setExpr('')
     setNombre(''); setUltimoCalculo(null)
-  }
+    setExprCompleta('')
+}
 
   const borrar = () => {
     if (!op) setNum1(prev => prev.slice(0, -1))

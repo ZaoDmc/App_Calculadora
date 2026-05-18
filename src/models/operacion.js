@@ -26,6 +26,10 @@ const Operacion = sequelize.define('Operacion', {
     resultado: {
         type: DataTypes.FLOAT,
         allowNull: false
+    },
+    expresion: {
+        type: DataTypes.STRING(500),
+        allowNull: true
     }
 }, {
     tableName: 'operaciones',

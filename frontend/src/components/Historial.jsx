@@ -36,7 +36,7 @@ const Historial = ({ operaciones, onEliminar }) => {
             <div className="msg sent">
               <div className="msg-name">Tú</div>
               <div className="msg-bubble">
-                {op.numero1} {op.operacion} {op.numero2} = <strong>{op.resultado}</strong>
+                {op.expresion || `${op.numero1} ${op.operacion} ${op.numero2} = ${op.resultado}`}
                 <span className="msg-delete" onClick={() => onEliminar(op.id)}>🗑</span>
               </div>
               <div className="msg-meta">{new Date(op.createdAt).toLocaleTimeString()}</div>
